@@ -21,7 +21,7 @@ const library = {
                       tracks: ["t03"]
                     }
              }
-};
+}; 
 
 /////////////////////////////
 // FUNCTIONS TO IMPLEMENT:
@@ -36,27 +36,38 @@ const printPlaylists = function() {
    console.log(`${playlists[playlist].id}: ${playlists[playlist].name} - ${playlists[playlist].tracks.length} tracks `);
  }
 };
-printPlaylists();
+// printPlaylists();
 
 // prints a list of all tracks, using the following format:
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
 // t02: Model View Controller by James Dempsey (WWDC 2003)
 // t03: Four Thirty-Three by John Cage (Woodstock 1952)
+
 const printTracks = function() {
  const tracks = library.tracks 
   for(const track in tracks) {
    console.log(`${tracks[track].id}: ${tracks[track].name} by ${tracks[track].artist} (${tracks[track].album})`)
  }
 };
-printTracks();
+// printTracks();
 
 // prints a list of tracks for a given playlist, using the following format:
 // p01: Coding Music - 2 tracks
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
 // t02: Model View Controller by James Dempsey (WWDC 2003)
 const printPlaylist = function(playlistId) {
-
+       if (playlistId in library.playlists) {
+       const playlist = library.playlists[playlistId]
+       const tracks = library.tracks
+       console.log(`${playlist.id}: ${playlist.name} - ${playlist.tracks.length} tracks `)
+       for (const track of playlist.tracks) {
+       console.log(`${tracks[track].id}: ${tracks[track].name} by ${tracks[track].artist} (${tracks[track].album})`)
+    }
+ }
 }
+printPlaylist("p01");
+
+
 
 
 // adds an existing track to an existing playlist
