@@ -65,15 +65,20 @@ const printPlaylist = function(playlistId) {
     }
  }
 }
-printPlaylist("p01");
+//printPlaylist("p01");
 
 
 
 
 // adds an existing track to an existing playlist
 const addTrackToPlaylist = function(trackId, playlistId) {
-
+if (playlistId in library.playlists && trackId in library.tracks) {
+const playlist = library.playlists[playlistId]
+playlist.tracks.push(trackId)
+console.log(playlist);
 }
+};
+addTrackToPlaylist("t03", "p01");
 
 
 // generates a unique id
