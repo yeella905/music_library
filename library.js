@@ -78,7 +78,7 @@ playlist.tracks.push(trackId)
 console.log(playlist);
 }
 };
-addTrackToPlaylist("t03", "p01");
+//addTrackToPlaylist("t03", "p01");
 
 
 // generates a unique id
@@ -90,15 +90,29 @@ const generateUid = function() {
 
 // adds a track to the library
 const addTrack = function(name, artist, album) {
-
+ //id equals the random unqiuse track id      
+const id = generateUid();
+//the new track has all the parameters plus the new id in the front
+const track = { id, name, artist, album};
+//takes the original object it now has the new unique id [id] and equals to the track variable
+library.tracks[id] = track
+//To see the result of the new track in the Library object
+console.log(library.tracks)
 }
-
+//inputs for the parameters thats getting call into the line 96 variable
+//addTrack("ella", "ye", "hello");
 
 // adds a playlist to the library
 const addPlaylist = function(name) {
+const id = generateUid();
 
+const playlist = {id, name, tracks:[]}
+
+library.playlists[id] = playlist;
+
+console.log(library.playlists);
 }
-
+addPlaylist("p03");
 
 // STRETCH:
 // given a query string string, prints a list of tracks
