@@ -20,8 +20,7 @@ const library = {
                       name: "Other Playlist",
                       tracks: ["t03"]
                     }
-             }
-}; 
+             },
 
 /////////////////////////////
 // FUNCTIONS TO IMPLEMENT:
@@ -30,89 +29,100 @@ const library = {
 // prints a list of all playlists, in the form:
 // p01: Coding Music - 2 tracks
 // p02: Other Playlist - 1 tracks
-const printPlaylists = function() {
- const playlists = library.playlists
+printPlaylists: function() {
+ const playlists = this.playlists; //access playlist using this.
   for(const playlist in playlists) {
    console.log(`${playlists[playlist].id}: ${playlists[playlist].name} - ${playlists[playlist].tracks.length} tracks `);
  }
-};
-printPlaylists();
+},
 
 // prints a list of all tracks, using the following format:
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
 // t02: Model View Controller by James Dempsey (WWDC 2003)
 // t03: Four Thirty-Three by John Cage (Woodstock 1952)
 
-const printTracks = function() {
- const tracks = library.tracks 
+printTracks: function() {
+ const tracks = this.tracks 
   for(const track in tracks) {
    console.log(`${tracks[track].id}: ${tracks[track].name} by ${tracks[track].artist} (${tracks[track].album})`)
  }
-};
-printTracks();
+},
+//printTracks();
 
 // prints a list of tracks for a given playlist, using the following format:
 // p01: Coding Music - 2 tracks
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
 // t02: Model View Controller by James Dempsey (WWDC 2003)
-const printPlaylist = function(playlistId) {
-       if (playlistId in library.playlists) {
-       const playlist = library.playlists[playlistId]
-       const tracks = library.tracks
+printPlaylist: function(playlistId) {
+       if (playlistId in this.playlists) {
+       const playlist = this.playlists[playlistId]
+       const tracks = this.tracks
        console.log(`${playlist.id}: ${playlist.name} - ${playlist.tracks.length} tracks `)
        for (const track of playlist.tracks) {
        console.log(`${tracks[track].id}: ${tracks[track].name} by ${tracks[track].artist} (${tracks[track].album})`)
     }
  }
-};
-printPlaylist("p01");
+
+},
+//printPlaylist("p01");
 
 
 
 
 // adds an existing track to an existing playlist
-const addTrackToPlaylist = function(trackId, playlistId) {
-if (playlistId in library.playlists && trackId in library.tracks) {
-const playlist = library.playlists[playlistId]
+addTrackToPlaylist: function(trackId, playlistId) {
+if (playlistId in this.playlists && trackId in this.tracks) {
+const playlist = this.playlists[playlistId]
 playlist.tracks.push(trackId)
 console.log(playlist);
 }
-};
-addTrackToPlaylist("t03", "p01");
+},
+//addTrackToPlaylist("t03", "p01");
 
 
 // generates a unique id
 // (already implemented: use this for addTrack and addPlaylist)
-const generateUid = function() {
+generateUid: function() {
   return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-}
+},
 
 
 // adds a track to the library
-const addTrack = function(name, artist, album) {
+addTrack: function(name, artist, album) {
  //id equals the random unqiuse track id      
-const id = generateUid();
+const id = this.generateUid();
 //the new track has all the parameters plus the new id in the front
 const track = { id, name, artist, album};
 //takes the original object it now has the new unique id [id] and equals to the track variable
-library.tracks[id] = track
+this.tracks[id] = track
 //To see the result of the new track in the Library object
-console.log(library.tracks)
-}
+console.log(this.tracks)
+},
 //inputs for the parameters thats getting call into the line 96 variable
-addTrack("ella", "ye", "hello");
+//addTrack("ella", "ye", "hello");
 
 // adds a playlist to the library
-const addPlaylist = function(name) {
-const id = generateUid();
+addPlaylist: function(name) {
+const id = this.generateUid();
 
 const playlist = {id, name, tracks:[]}
 
 library.playlists[id] = playlist;
 
-console.log(library.playlists);
-}
-addPlaylist("p03");
+console.log(this.playlists);
+},
+
+};
+
+library.printPlaylists();
+library.printTracks();
+library.printPlaylist("p01");
+library.addTrackToPlaylist("t03", "p01");
+library.addTrack("ella", "ye", "hello")
+library.addPlaylist();
+
+
+//addPlaylist("p03");
 
 // STRETCH:
 // given a query string string, prints a list of tracks
@@ -121,4 +131,5 @@ addPlaylist("p03");
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/search
 const printSearchResults = function(query) {
 
-}
+};
+ 
