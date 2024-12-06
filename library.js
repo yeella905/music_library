@@ -36,7 +36,7 @@ const printPlaylists = function() {
    console.log(`${playlists[playlist].id}: ${playlists[playlist].name} - ${playlists[playlist].tracks.length} tracks `);
  }
 };
-// printPlaylists();
+printPlaylists();
 
 // prints a list of all tracks, using the following format:
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
@@ -49,7 +49,7 @@ const printTracks = function() {
    console.log(`${tracks[track].id}: ${tracks[track].name} by ${tracks[track].artist} (${tracks[track].album})`)
  }
 };
-// printTracks();
+printTracks();
 
 // prints a list of tracks for a given playlist, using the following format:
 // p01: Coding Music - 2 tracks
@@ -64,8 +64,8 @@ const printPlaylist = function(playlistId) {
        console.log(`${tracks[track].id}: ${tracks[track].name} by ${tracks[track].artist} (${tracks[track].album})`)
     }
  }
-}
-//printPlaylist("p01");
+};
+printPlaylist("p01");
 
 
 
@@ -78,7 +78,7 @@ playlist.tracks.push(trackId)
 console.log(playlist);
 }
 };
-//addTrackToPlaylist("t03", "p01");
+addTrackToPlaylist("t03", "p01");
 
 
 // generates a unique id
@@ -100,7 +100,7 @@ library.tracks[id] = track
 console.log(library.tracks)
 }
 //inputs for the parameters thats getting call into the line 96 variable
-//addTrack("ella", "ye", "hello");
+addTrack("ella", "ye", "hello");
 
 // adds a playlist to the library
 const addPlaylist = function(name) {
